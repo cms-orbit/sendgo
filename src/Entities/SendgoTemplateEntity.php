@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace CmsOrbit\Sendgo\Entities;
 
 use CmsOrbit\Core\Foundation\Entity\Entity;
-use CmsOrbit\Sendgo\Actions\SyncTemplatesAction;
-use CmsOrbit\Sendgo\Models\SendgoTemplate;
 use CmsOrbit\Core\Screen\Sight;
 use CmsOrbit\Core\Screen\TD;
+use CmsOrbit\Sendgo\Actions\SyncTemplatesAction;
+use CmsOrbit\Sendgo\Models\SendgoTemplate;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,9 +44,9 @@ class SendgoTemplateEntity extends Entity
         return 'integrations';
     }
 
-    public function menuParent(): ?string
+    public function displayInNavigation(): bool
     {
-        return 'sendgo-records';
+        return false;
     }
 
     public function sort(): int

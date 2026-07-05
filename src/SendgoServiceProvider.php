@@ -99,7 +99,11 @@ class SendgoServiceProvider extends OrbitServiceProvider
                 ->list([
                     Menu::make(__('Overview'))
                         ->icon('bs.grid')
-                        ->url($hubUrl),
+                        ->url($hubUrl)
+                        ->active([
+                            $hubUrl,
+                            $hubUrl.'?*',
+                        ]),
 
                     Menu::make(__('Templates'))
                         ->icon('bs.file-earmark-richtext')
@@ -132,9 +136,9 @@ class SendgoServiceProvider extends OrbitServiceProvider
     {
         OrbitConfig::registerGroup('SendGo', 520, [
             'icon' => 'bs.send',
-            'title' => 'SendGo',
-            'description' => 'SendGo API credentials, sender keys, and phone verification settings.',
-            'hubSection' => 'integrations',
+            'title' => __('SendGo'),
+            'description' => __('SendGo API credentials, sender keys, and phone verification settings.'),
+            'hubSection' => 'api',
         ]);
 
         OrbitConfig::registerSection('SendGo', 'credentials', [
