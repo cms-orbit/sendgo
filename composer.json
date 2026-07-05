@@ -1,0 +1,53 @@
+{
+    "name": "cms-orbit/sendgo",
+    "version": "1.0.0",
+    "description": "Orbit SendGo integration: admin GUI, template sync, campaign records, and phone verification.",
+    "keywords": [
+        "laravel",
+        "cms",
+        "orbit",
+        "sendgo",
+        "sms",
+        "kakao",
+        "alimtalk"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "cms-orbit/core": "^4.0",
+        "illuminate/http": "^11.0 || ^12.0 || ^13.0",
+        "illuminate/support": "^11.0 || ^12.0 || ^13.0",
+        "techigh/sendgo-notification": "^1.2"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "orchestra/testbench": "^10.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CmsOrbit\\Sendgo\\": "src/",
+            "CmsOrbit\\Sendgo\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CmsOrbit\\Sendgo\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CmsOrbit\\Sendgo\\SendgoServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "lock": false
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
