@@ -16,6 +16,7 @@ use CmsOrbit\Sendgo\Api\SendgoAdminClient;
 use CmsOrbit\Sendgo\Console\MigrateAuthSendgoConfigCommand;
 use CmsOrbit\Sendgo\Console\SyncTemplatesCommand;
 use CmsOrbit\Sendgo\Entities\SendgoTemplateEntity;
+use CmsOrbit\Sendgo\Services\SendgoAlimtalkSender;
 use CmsOrbit\Sendgo\Settings\SendgoSettings;
 use CmsOrbit\Sendgo\Support\ConfigBridge;
 use CmsOrbit\Sendgo\Support\ResolvesSendgoRoutes;
@@ -32,6 +33,7 @@ class SendgoServiceProvider extends OrbitServiceProvider
         $this->app->singleton(SendgoSettings::class);
         $this->app->singleton(SendgoAdminClient::class);
         $this->app->singleton(ConfigBridge::class);
+        $this->app->singleton(SendgoAlimtalkSender::class);
         $this->app->singleton(PhoneVerificationSender::class, SendgoPhoneVerificationSender::class);
 
         $this->app->afterResolving(EntityRegistry::class, function (EntityRegistry $registry): void {

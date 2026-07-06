@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace CmsOrbit\Sendgo;
 
 use CmsOrbit\Core\Auth\Phone\PhoneVerificationSender;
+use CmsOrbit\Sendgo\Services\SendgoAlimtalkSender;
 use CmsOrbit\Sendgo\Settings\SendgoSettings;
 use Illuminate\Support\Facades\Log;
-use Techigh\SendgoNotification\Attributes\Alim\AlimTalk;
-use Techigh\SendgoNotification\Attributes\Alim\AlimTalkMessage;
 use Techigh\SendgoNotification\Attributes\Sms\Sms;
 use Techigh\SendgoNotification\Attributes\Sms\SmsMessage;
 
@@ -16,6 +15,7 @@ class SendgoPhoneVerificationSender implements PhoneVerificationSender
 {
     public function __construct(
         private readonly SendgoSettings $settings,
+        private readonly SendgoAlimtalkSender $alimtalkSender,
     ) {}
 
     public function send(string $phone, string $code, string $channel): void
@@ -65,16 +65,16 @@ class SendgoPhoneVerificationSender implements PhoneVerificationSender
             throw new \RuntimeException('SendGo phone verification AlimTalk template code must be configured.');
         }
 
-        app(AlimTalk::class)->send(
-            AlimTalkMessage::make()
-                ->templateCode($templateCode)
-                ->replaceSms('Y')
-                ->smsContent(__('인증번호는 :code 입니다.', ['code' => $code]))
-                ->to([
+        $this->alimtalkSender->send(
+            templateCode: $templateCode,
+            contacts: [
+                [
                     'contact' => $phone,
                     'var1' => $code,
-                ])
-                ->toArray()
+                ],
+            ],
+            replaceSms: true,
+            smsContent: __('인증번호는 :code 입니다.', ['code' => $code]),
         );
     }
 }

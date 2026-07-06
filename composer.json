@@ -15,7 +15,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "cms-orbit/core": "^4.0.1",
+        "cms-orbit/core": "^4.0.2",
         "illuminate/http": "^11.0 || ^12.0 || ^13.0",
         "illuminate/support": "^11.0 || ^12.0 || ^13.0",
         "techigh/sendgo-notification": "^1.2"
