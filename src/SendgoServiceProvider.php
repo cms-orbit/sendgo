@@ -58,7 +58,7 @@ class SendgoServiceProvider extends OrbitServiceProvider
 
         $this->registerRoutes();
 
-        Orbit::registerSection('integrations', 'bs.send', __('Integrations'), 4500);
+        Orbit::registerSection('integrations', 'bs.send', fn () => __('Integrations'), 4500);
 
         Orbit::registerPermission(
             ItemPermission::group(__('SendGo'))

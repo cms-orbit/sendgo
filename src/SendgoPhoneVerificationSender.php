@@ -48,7 +48,7 @@ class SendgoPhoneVerificationSender implements PhoneVerificationSender
         app(Sms::class)->send(
             SmsMessage::make()
                 ->messageType('SMS')
-                ->content(__('인증번호는 :code 입니다.', ['code' => $code]))
+                ->content(__('Your verification code is :code.', ['code' => $code]))
                 ->to([
                     'contact' => $phone,
                     'var1' => $code,
@@ -74,7 +74,7 @@ class SendgoPhoneVerificationSender implements PhoneVerificationSender
                 ],
             ],
             replaceSms: true,
-            smsContent: __('인증번호는 :code 입니다.', ['code' => $code]),
+            smsContent: __('Your verification code is :code.', ['code' => $code]),
         );
     }
 }
