@@ -112,6 +112,14 @@ SendGo API에서 동기화한 AlimTalk 템플릿 메타데이터(코드, 제목,
 
 ## 업데이트 노트
 
+### 4.0.5
+
+- **php 제약 `^8.3` 복구**: 게시된 태그는 모두 `^8.3` 이었으나 main 에서 `^8.2` 로 내려가 있었습니다. Laravel 13 은 php `^8.3` 을 요구하므로 `php ^8.2` + `laravel/framework ^13` 조합은 php 8.2 환경에서 조용히 Laravel 11 을 설치합니다.
+- **`laravel/pint` `^1.14` → `^1.30`** (1.30 이 php `^8.3` 을 요구).
+- **`orchestra/testbench` `^10.0` → `^9.0 || ^10.0 || ^11.0`**: 9=Laravel 11, 10=Laravel 12, 11=Laravel 13 이므로 이 패키지가 지원하는 프레임워크 범위와 일치시켰습니다. 이전에는 `^10.0` 만 허용해 Laravel 13 에서 테스트를 돌릴 수 없었습니다.
+- **`pestphp/pest` 는 `^4.0` 유지**: Pest 5 는 php `^8.4` 를 요구하는데 이 패키지의 최소 php 는 `^8.3` 입니다. Pest 5 를 받으려면 php 최소 버전을 `^8.4` 로 올려야 해서 보류했습니다.
+- **릴리스 파이프라인 도입**: `.githooks/pre-push` 가 composer.json 의 `version` 필드와 태그명이 어긋난 태그의 푸시를 차단합니다. `cms-orbit/core` 의 `4.0.8` 태그가 `version: 4.0.7` 로 만들어져 Packagist 가 아무 오류 없이 그 태그를 무시했고, 4.0.8 이 게시되지 않은 사실을 아무도 알지 못한 사고가 있었습니다. `bin/release <버전>` 이 version 갱신·검증·커밋·태그·푸시를 한 동작으로 묶어 이 드리프트를 원천 차단하고, `cms-orbit/*` 의존이 실제로 Packagist 에 게시되어 있는지 Composer 리졸버로 확인합니다. 저장소를 클론해 `composer install` 하면 `core.hooksPath` 가 자동 설정됩니다.
+
 ### 4.0.4
 
 - **프런트 매니페스트 추가**: `resources/orbit/frontend.json`을 제공해 `orbit:frontend-sync`가 `@cms-orbit/sendgo` Vite alias를 자동 관리하도록 했습니다. 이전에는 매니페스트가 없어, 순정 호스트에서 frontend-sync 실행 시 sendgo alias가 누락되어 `Rolldown failed to resolve import "@cms-orbit/sendgo"` 빌드 오류가 발생했습니다.
