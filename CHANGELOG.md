@@ -2,6 +2,39 @@
 
 이 문서는 `cms-orbit/sendgo`의 릴리스 노트를 기록합니다.
 
+## 4.0.5 - 2026-08-28
+
+### 수정
+
+- **php 제약 `^8.2` → `^8.3` 복구**: 게시된 태그는 모두 `^8.3`이었으나 main에서 `^8.2`로 내려가 있었습니다. Laravel 13은 php `^8.3`을 요구하므로 `php ^8.2` + `laravel/framework ^13` 조합은 php 8.2 환경에서 조용히 Laravel 11을 설치합니다.
+- **`laravel/pint` `^1.14` → `^1.30`** (1.30이 php `^8.3`을 요구).
+- **`orchestra/testbench` `^10.0` → `^9.0 || ^10.0 || ^11.0`**: 9=Laravel 11, 10=Laravel 12, 11=Laravel 13이므로 지원 프레임워크 범위와 일치시켰습니다. 이전에는 `^10.0`만 허용해 Laravel 13에서 테스트를 돌릴 수 없었습니다.
+- 휴대폰 인증 SMS 본문의 소스 키를 영문으로 바꿨습니다.
+
+### 추가
+
+- **릴리스 파이프라인 도입**: `.githooks/pre-push`가 composer.json의 `version` 필드와 태그명이 어긋난 태그의 푸시를 차단합니다. `cms-orbit/core`의 `4.0.8` 태그가 `version: 4.0.7`로 만들어져 Packagist가 아무 오류 없이 그 태그를 무시했고, 4.0.8이 게시되지 않은 사실을 아무도 알지 못한 사고가 있었습니다. `bin/release <버전>`이 version 갱신·검증·커밋·태그·푸시를 한 동작으로 묶어 드리프트를 원천 차단하고, `cms-orbit/*` 의존이 실제로 Packagist에 게시되어 있는지 Composer 리졸버로 확인합니다. 클론 후 `composer install` 시 `core.hooksPath`가 자동 설정됩니다.
+
+### 안내
+
+- **`pestphp/pest`는 `^4.0` 유지**: Pest 5는 php `^8.4`를 요구하는데 이 패키지의 최소 php는 `^8.3`입니다. Pest 5를 받으려면 php 하한을 올려야 해서 보류했습니다.
+
+## 4.0.4 - 2026-08-28
+
+### 수정
+
+- **프런트 매니페스트 추가**: `resources/orbit/frontend.json`을 제공해 `orbit:frontend-sync`가 `@cms-orbit/sendgo` Vite alias를 자동 관리하도록 했습니다. 이전에는 매니페스트가 없어 순정 호스트에서 frontend-sync 실행 시 alias가 누락되어 `Rolldown failed to resolve import "@cms-orbit/sendgo"` 빌드 오류가 발생했습니다.
+
+## 4.0.3 - 2026-08-28
+
+### 추가
+
+- **`SendgoAlimtalkSender`**: 사용량 추적을 위한 발송 로그를 남기는 알림톡 발송기를 추가했습니다.
+
+### 개선
+
+- README 한글 설명을 보완했습니다.
+
 ## 4.0.2 - 2026-07-06
 
 ### 추가
