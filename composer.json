@@ -14,15 +14,15 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "cms-orbit/core": "^4.1",
         "illuminate/http": "^11.0 || ^12.0 || ^13.0",
         "illuminate/support": "^11.0 || ^12.0 || ^13.0",
         "techigh/sendgo-notification": "^1.2"
     },
     "require-dev": {
-        "laravel/pint": "^1.14",
-        "orchestra/testbench": "^10.0",
+        "laravel/pint": "^1.30",
+        "orchestra/testbench": "^9.0 || ^10.0 || ^11.0",
         "pestphp/pest": "^4.0",
         "pestphp/pest-plugin-laravel": "^4.0"
     },
@@ -49,5 +49,10 @@
         "lock": false
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [
+            "git config core.hooksPath .githooks || true"
+        ]
+    }
 }
