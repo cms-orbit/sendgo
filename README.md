@@ -112,6 +112,15 @@ SendGo API에서 동기화한 AlimTalk 템플릿 메타데이터(코드, 제목,
 
 ## 업데이트 노트
 
+### 4.1.0
+
+- **php 제약 `^8.3` → `^8.4`**: php 8.3 환경에서는 더 이상 설치되지 않습니다.
+- **`cms-orbit/core` `^4.1` → `^4.4`**.
+- **`pestphp/pest` `^4.0` → `^5.0`**, **`pestphp/pest-plugin-laravel` `^4.0` → `^5.0`** (`require-dev`). Pest 5 가 php `^8.4` 를 요구하는 것이 php 하한을 올린 이유입니다. PHPUnit 도 13.3 으로 함께 올라갑니다.
+- **`orchestra/testbench` `^9.0 || ^10.0 || ^11.0` → `^11.0`** (`require-dev`): `pest-plugin-laravel` 5 가 `laravel/framework ^13.23` 을 요구하므로 testbench 9(L11)·10(L12)은 Pest 5 와 함께 설치될 수 없습니다. 해석되지 않는 범위를 남겨두지 않고 사실에 맞게 좁혔습니다.
+- **생산 의존은 하나도 바뀌지 않았습니다.** php 하한 상향으로 새로 받게 된 패키지는 Pest 5 계열(`require-dev`)뿐입니다. cms-orbit 전 패키지의 직접 의존 20개를 최신판과 전수 대조했고, 나머지 18개는 이미 php `^8.3` 에서 최신을 받고 있었습니다. 이번 상향은 기능 확보가 아니라 장기 정리 목적입니다.
+- **소비자의 Laravel 11·12 지원은 유지됩니다** (`laravel/framework ^11.0 || ^12.0 || ^13.0`).
+
 ### 4.0.5
 
 - **php 제약 `^8.3` 복구**: 게시된 태그는 모두 `^8.3` 이었으나 main 에서 `^8.2` 로 내려가 있었습니다. Laravel 13 은 php `^8.3` 을 요구하므로 `php ^8.2` + `laravel/framework ^13` 조합은 php 8.2 환경에서 조용히 Laravel 11 을 설치합니다.
