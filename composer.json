@@ -1,6 +1,6 @@
 {
     "name": "cms-orbit/sendgo",
-    "version": "4.1.0",
+    "version": "4.2.0",
     "description": "Orbit SendGo integration: admin GUI, template sync, campaign records, and phone verification.",
     "keywords": [
         "laravel",
@@ -15,9 +15,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "cms-orbit/core": "^4.4",
-        "illuminate/http": "^11.0 || ^12.0 || ^13.0",
-        "illuminate/support": "^11.0 || ^12.0 || ^13.0",
+        "cms-orbit/core": "^4.5",
+        "illuminate/http": "^13.0",
+        "illuminate/support": "^13.0",
         "techigh/sendgo-notification": "^1.2"
     },
     "require-dev": {

@@ -14,8 +14,8 @@ Hub 대시보드, AlimTalk 템플릿 동기화, SMS·AlimTalk·FriendTalk 캠페
 
 ## 요구사항
 
-- PHP `^8.3`
-- `cms-orbit/core` `^4.0.1`
+- PHP `^8.4`
+- `cms-orbit/core` `^4.5`
 - `techigh/sendgo-notification` `^1.2`
 
 ## 설치
@@ -111,6 +111,13 @@ php artisan sendgo:migrate-config    # auth_sendgo.* → sendgo.* 마이그레�
 SendGo API에서 동기화한 AlimTalk 템플릿 메타데이터(코드, 제목, 상태, 변수 등)를 로컬에 캐시합니다.
 
 ## 업데이트 노트
+
+### 4.2.0
+
+- **`illuminate/http` 와 `illuminate/support` `^11.0 || ^12.0 || ^13.0` → `^13.0`**: Laravel 13 전용으로 좁혔습니다.
+- **`cms-orbit/core` `^4.4` → `^4.5`**.
+- **왜 좁혔나**: Pest 5 를 채택한 4.4.0(패키지별 4.1.0)부터 `pest-plugin-laravel` 5 가 `laravel/framework ^13.23` 을 요구해, 이 저장소의 테스트가 Laravel 13 으로만 해석됩니다. 즉 Laravel 11·12 호환성을 더 이상 검증할 수 없는 상태로 그 범위를 광고하고 있었습니다. 검증되지 않는 지원 범위를 제약에 남겨두지 않기로 했습니다.
+- **Laravel 11·12 사용자는 업그레이드가 필요합니다.** 이번 변경은 실제로 지원 구성을 제거하므로, php 하한 상향과 달리 소비자에게 직접 영향이 있습니다. Laravel 13 으로 올리거나 이전 버전에 머물러야 합니다.
 
 ### 4.1.0
 
