@@ -112,6 +112,13 @@ SendGo API에서 동기화한 AlimTalk 템플릿 메타데이터(코드, 제목,
 
 ## 업데이트 노트
 
+### 4.3.0
+
+- **`cms-orbit/core` `^4.5` → `^4.6`**: core 4.6.0 이 `OrbitAccess` 라우팅 리졸버와 여러 관리자 화면 수정(PostgreSQL 500, strict mode, `orbit:install` 의 OrbitProvider 미등록)을 담고 있습니다.
+- **GitHub Actions 워크플로 추가**: php 8.4·8.5 로 `composer validate` 와 `pint --test` 를 돌리는 `ci.yml`, 그리고 태그의 `composer.json` version 이 태그명과 일치하는지 확인하는 `release-guard.yml`. Packagist 는 불일치 태그를 조용히 무시합니다.
+- 위성 패키지의 CI 는 `cms-orbit/core` 를 Packagist 게시본으로 받으므로, "지금 게시된 core 와 이 패키지의 제약이 함께 해석되는가" 까지 같이 검증합니다.
+- **pint 포맷 정규화**: `pint --test` 를 CI 게이트로 걸려면 기존 코드가 설정에 맞아야 해서 함께 정규화했습니다. 순수 포맷 변경이며 동작은 바뀌지 않습니다.
+
 ### 4.2.0
 
 - **`illuminate/http` 와 `illuminate/support` `^11.0 || ^12.0 || ^13.0` → `^13.0`**: Laravel 13 전용으로 좁혔습니다.
