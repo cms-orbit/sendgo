@@ -50,21 +50,21 @@ abstract class AbstractCampaignListScreen extends Screen
         }
 
         return [
-            'filters' => $filters,
-            'error' => $error,
+            'filters'   => $filters,
+            'error'     => $error,
             'campaigns' => collect($rows)->map(function (array $row): array {
                 $uuid = (string) ($row['uuid'] ?? '');
 
                 return [
-                    'uuid' => $uuid,
-                    'management_code' => $row['management_code'] ?? '—',
-                    'status' => $row['status'] ?? '—',
-                    'message_type' => $row['message_type'] ?? ($row['template_code'] ?? '—'),
-                    'total_count' => $row['total_count'] ?? 0,
-                    'success_count' => $row['success_count'] ?? 0,
-                    'failed_count' => $row['failed_count'] ?? 0,
+                    'uuid'                 => $uuid,
+                    'management_code'      => $row['management_code'] ?? '—',
+                    'status'               => $row['status'] ?? '—',
+                    'message_type'         => $row['message_type'] ?? ($row['template_code'] ?? '—'),
+                    'total_count'          => $row['total_count'] ?? 0,
+                    'success_count'        => $row['success_count'] ?? 0,
+                    'failed_count'         => $row['failed_count'] ?? 0,
                     'created_at_formatted' => $row['created_at_formatted'] ?? ($row['updated_at_formatted'] ?? '—'),
-                    'url' => $uuid !== '' ? route($this->viewRouteName(), ['id' => $uuid]) : '#',
+                    'url'                  => $uuid !== '' ? route($this->viewRouteName(), ['id' => $uuid]) : '#',
                 ];
             })->all(),
         ];

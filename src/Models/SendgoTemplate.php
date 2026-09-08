@@ -5,19 +5,20 @@ declare(strict_types=1);
 namespace CmsOrbit\Sendgo\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
- * @property int $id
- * @property string $uuid
- * @property string $template_code
- * @property string|null $template_name
- * @property string|null $status
- * @property string|null $inspection_status
- * @property string|null $kakao_sender_id
- * @property string|null $template_content
+ * @property int                       $id
+ * @property string                    $uuid
+ * @property string                    $template_code
+ * @property string|null               $template_name
+ * @property string|null               $status
+ * @property string|null               $inspection_status
+ * @property string|null               $kakao_sender_id
+ * @property string|null               $template_content
  * @property array<string, mixed>|null $buttons
  * @property array<string, mixed>|null $payload
- * @property \Illuminate\Support\Carbon|null $synced_at
+ * @property Carbon|null               $synced_at
  */
 class SendgoTemplate extends Model
 {
@@ -42,8 +43,8 @@ class SendgoTemplate extends Model
     protected function casts(): array
     {
         return [
-            'buttons' => 'array',
-            'payload' => 'array',
+            'buttons'   => 'array',
+            'payload'   => 'array',
             'synced_at' => 'datetime',
         ];
     }

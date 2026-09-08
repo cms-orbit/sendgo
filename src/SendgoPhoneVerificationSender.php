@@ -23,8 +23,8 @@ class SendgoPhoneVerificationSender implements PhoneVerificationSender
         if (! $this->settings->configured() && app()->environment(['local', 'testing'])) {
             Log::info('Orbit SendGo verification code', [
                 'channel' => $channel,
-                'phone' => $phone,
-                'code' => $code,
+                'phone'   => $phone,
+                'code'    => $code,
             ]);
 
             return;
@@ -51,7 +51,7 @@ class SendgoPhoneVerificationSender implements PhoneVerificationSender
                 ->content(__('Your verification code is :code.', ['code' => $code]))
                 ->to([
                     'contact' => $phone,
-                    'var1' => $code,
+                    'var1'    => $code,
                 ])
                 ->toArray()
         );
@@ -70,7 +70,7 @@ class SendgoPhoneVerificationSender implements PhoneVerificationSender
             contacts: [
                 [
                     'contact' => $phone,
-                    'var1' => $code,
+                    'var1'    => $code,
                 ],
             ],
             replaceSms: true,

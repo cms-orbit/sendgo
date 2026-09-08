@@ -43,7 +43,8 @@ class SendgoAdminClient extends SendGo
     }
 
     /**
-     * @param  array<string, mixed>  $filters
+     * @param array<string, mixed> $filters
+     *
      * @return array<string, mixed>
      */
     public function listMessages(array $filters = []): array
@@ -60,7 +61,8 @@ class SendgoAdminClient extends SendGo
     }
 
     /**
-     * @param  array<string, mixed>  $filters
+     * @param array<string, mixed> $filters
+     *
      * @return array<string, mixed>
      */
     public function listNotices(array $filters = []): array
@@ -77,7 +79,8 @@ class SendgoAdminClient extends SendGo
     }
 
     /**
-     * @param  array<string, mixed>  $filters
+     * @param array<string, mixed> $filters
+     *
      * @return array<string, mixed>
      */
     public function listFriends(array $filters = []): array
@@ -94,7 +97,8 @@ class SendgoAdminClient extends SendGo
     }
 
     /**
-     * @param  array<string, mixed>  $filters
+     * @param array<string, mixed> $filters
+     *
      * @return array<string, mixed>
      */
     public function listTemplates(array $filters = []): array
@@ -135,7 +139,8 @@ class SendgoAdminClient extends SendGo
     }
 
     /**
-     * @param  array<string, mixed>  $query
+     * @param array<string, mixed> $query
+     *
      * @return array<string, mixed>
      */
     protected function performGet(string $url, array $query = []): array
@@ -157,6 +162,7 @@ class SendgoAdminClient extends SendGo
 
         if ($response->failed()) {
             $endpointName = basename(parse_url($url, PHP_URL_PATH) ?? $url);
+
             throw SendGoException::fromResponse(
                 $response->status(),
                 $response->json() ?? [],

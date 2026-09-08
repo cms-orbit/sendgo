@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4', '8.5']
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      # composer.json 이 config.lock=false 라 lock 파일이 없다.
+      #
+      # cms-orbit/core 를 요구하지만 이 저장소는 그 소스를 갖고 있지 않으므로
+      # Packagist 의 게시본을 받는다. 즉 이 잡은 "지금 게시된 core 와 이
+      # 패키지의 제약이 함께 해석되는가" 까지 같이 검증한다 — core ^4.1 을
+      # 요구하면서 core 4.1.0 을 게시하지 않아 소비자 설치가 깨졌던 사고를
+      # 여기서 잡는다.
+      - name: Install dependencies
+        run: composer update --no-interaction --no-progress --prefer-dist
+
+      - name: Validate composer.json
+        run: composer validate --no-check-publish --no-check-lock
+
+      - name: Check formatting
+        run: vendor/bin/pint --test

@@ -112,10 +112,10 @@ class SendgoTemplateEntity extends Entity
     public function presenter(Model $model): array
     {
         return [
-            'label' => $this->singularLabel(),
-            'title' => (string) ($model->getAttribute('template_name') ?: $model->getAttribute('template_code')),
+            'label'    => $this->singularLabel(),
+            'title'    => (string) ($model->getAttribute('template_name') ?: $model->getAttribute('template_code')),
             'subTitle' => (string) $model->getAttribute('template_code'),
-            'url' => $this->showUrl($model),
+            'url'      => $this->showUrl($model),
         ];
     }
 }

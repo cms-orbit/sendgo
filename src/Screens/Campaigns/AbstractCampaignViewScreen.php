@@ -50,8 +50,8 @@ abstract class AbstractCampaignViewScreen extends Screen
 
         return [
             'campaign' => is_array($campaign) ? $campaign : [],
-            'items' => $items,
-            'error' => $error,
+            'items'    => $items,
+            'error'    => $error,
         ];
     }
 

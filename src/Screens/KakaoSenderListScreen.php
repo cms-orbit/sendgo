@@ -49,7 +49,7 @@ class KakaoSenderListScreen extends Screen
         }
 
         return [
-            'error' => $error,
+            'error'   => $error,
             'senders' => is_array($senders) ? $senders : [],
         ];
     }

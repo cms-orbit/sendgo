@@ -18,8 +18,8 @@ trait InteractsWithSendgoApi
         $count = max(1, min(100, (int) $request->input('count', 30)));
 
         return array_filter([
-            'from' => $from !== '' ? $from : Carbon::now()->subDays(90)->toDateString(),
-            'to' => $to !== '' ? $to : Carbon::now()->toDateString(),
+            'from'  => $from !== '' ? $from : Carbon::now()->subDays(90)->toDateString(),
+            'to'    => $to !== '' ? $to : Carbon::now()->toDateString(),
             'count' => $count,
         ]);
     }

@@ -137,19 +137,19 @@ class SendgoServiceProvider extends OrbitServiceProvider
     protected function registerSendgoConfigGroup(): void
     {
         OrbitConfig::registerGroup('SendGo', 520, [
-            'icon' => 'bs.send',
-            'title' => __('SendGo'),
+            'icon'        => 'bs.send',
+            'title'       => __('SendGo'),
             'description' => __('SendGo API credentials, sender keys, and phone verification settings.'),
-            'hubSection' => 'api',
+            'hubSection'  => 'api',
         ]);
 
         OrbitConfig::registerSection('SendGo', 'credentials', [
-            'title' => __('Connection'),
+            'title'    => __('Connection'),
             'priority' => 10,
         ]);
 
         OrbitConfig::registerSection('SendGo', 'phone', [
-            'title' => __('Phone verification'),
+            'title'    => __('Phone verification'),
             'priority' => 20,
         ]);
 
@@ -157,22 +157,22 @@ class SendgoServiceProvider extends OrbitServiceProvider
         $lockDescription = ' '.__('When managed by .env, this field is locked and masked.');
 
         OrbitConfig::registerItem('SendGo', 'sendgo.url', 'input', 'https://api.sendgo.io', 'credentials', [
-            'title' => __('SendGo API URL'),
+            'title'       => __('SendGo API URL'),
             'description' => __('Base URL for the SendGo API.').$lockDescription,
-            'display' => fn ($value = null, $item = null) => $settings()->displayValue('url'),
-            'persist' => fn ($item = null) => ! $settings()->isManagedByEnvironment('url'),
-            'field' => fn ($field, $item = null) => $settings()->isManagedByEnvironment('url')
+            'display'     => fn ($value = null, $item = null) => $settings()->displayValue('url'),
+            'persist'     => fn ($item = null) => ! $settings()->isManagedByEnvironment('url'),
+            'field'       => fn ($field, $item = null) => $settings()->isManagedByEnvironment('url')
                 ? $field->disabled()->readonly()
                 : $field,
         ]);
 
         OrbitConfig::registerItem('SendGo', 'sendgo.access_key', 'secret', null, 'credentials', [
-            'title' => __('SendGo Access Key'),
-            'encrypted' => true,
+            'title'       => __('SendGo Access Key'),
+            'encrypted'   => true,
             'description' => __('API access key from the SendGo console.').$lockDescription,
-            'display' => fn ($value = null, $item = null) => $settings()->displayValue('access_key'),
-            'persist' => fn ($item = null) => ! $settings()->isManagedByEnvironment('access_key'),
-            'field' => function ($field, $item = null) use ($settings) {
+            'display'     => fn ($value = null, $item = null) => $settings()->displayValue('access_key'),
+            'persist'     => fn ($item = null) => ! $settings()->isManagedByEnvironment('access_key'),
+            'field'       => function ($field, $item = null) use ($settings) {
                 $field->type('password')->autocomplete('new-password');
 
                 if ($settings()->isManagedByEnvironment('access_key')) {
@@ -184,12 +184,12 @@ class SendgoServiceProvider extends OrbitServiceProvider
         ]);
 
         OrbitConfig::registerItem('SendGo', 'sendgo.secret_key', 'secret', null, 'credentials', [
-            'title' => __('SendGo Secret Key'),
-            'encrypted' => true,
+            'title'       => __('SendGo Secret Key'),
+            'encrypted'   => true,
             'description' => __('API secret key from the SendGo console.').$lockDescription,
-            'display' => fn ($value = null, $item = null) => $settings()->displayValue('secret_key'),
-            'persist' => fn ($item = null) => ! $settings()->isManagedByEnvironment('secret_key'),
-            'field' => function ($field, $item = null) use ($settings) {
+            'display'     => fn ($value = null, $item = null) => $settings()->displayValue('secret_key'),
+            'persist'     => fn ($item = null) => ! $settings()->isManagedByEnvironment('secret_key'),
+            'field'       => function ($field, $item = null) use ($settings) {
                 $field->type('password')->autocomplete('new-password');
 
                 if ($settings()->isManagedByEnvironment('secret_key')) {
@@ -201,40 +201,40 @@ class SendgoServiceProvider extends OrbitServiceProvider
         ]);
 
         OrbitConfig::registerItem('SendGo', 'sendgo.sms_sender_key', 'input', null, 'credentials', [
-            'title' => __('SMS sender key'),
+            'title'       => __('SMS sender key'),
             'description' => __('Approved SMS sender UUID from SendGo.').$lockDescription,
-            'display' => fn ($value = null, $item = null) => $settings()->displayValue('sms_sender_key'),
-            'persist' => fn ($item = null) => ! $settings()->isManagedByEnvironment('sms_sender_key'),
-            'field' => fn ($field, $item = null) => $settings()->isManagedByEnvironment('sms_sender_key')
+            'display'     => fn ($value = null, $item = null) => $settings()->displayValue('sms_sender_key'),
+            'persist'     => fn ($item = null) => ! $settings()->isManagedByEnvironment('sms_sender_key'),
+            'field'       => fn ($field, $item = null) => $settings()->isManagedByEnvironment('sms_sender_key')
                 ? $field->disabled()->readonly()
                 : $field,
         ]);
 
         OrbitConfig::registerItem('SendGo', 'sendgo.kakao_sender_key', 'input', null, 'credentials', [
-            'title' => __('Kakao sender key'),
+            'title'       => __('Kakao sender key'),
             'description' => __('Kakao channel sender key from SendGo.').$lockDescription,
-            'display' => fn ($value = null, $item = null) => $settings()->displayValue('kakao_sender_key'),
-            'persist' => fn ($item = null) => ! $settings()->isManagedByEnvironment('kakao_sender_key'),
-            'field' => fn ($field, $item = null) => $settings()->isManagedByEnvironment('kakao_sender_key')
+            'display'     => fn ($value = null, $item = null) => $settings()->displayValue('kakao_sender_key'),
+            'persist'     => fn ($item = null) => ! $settings()->isManagedByEnvironment('kakao_sender_key'),
+            'field'       => fn ($field, $item = null) => $settings()->isManagedByEnvironment('kakao_sender_key')
                 ? $field->disabled()->readonly()
                 : $field,
         ]);
 
         OrbitConfig::registerItem('SendGo', 'sendgo.api_version', 'select', 'v2', 'credentials', [
-            'title' => __('API version'),
+            'title'   => __('API version'),
             'options' => [
                 'v1' => 'v1',
                 'v2' => 'v2',
             ],
             'display' => fn ($value = null, $item = null) => $settings()->displayValue('api_version'),
             'persist' => fn ($item = null) => ! $settings()->isManagedByEnvironment('api_version'),
-            'field' => fn ($field, $item = null) => $settings()->isManagedByEnvironment('api_version')
+            'field'   => fn ($field, $item = null) => $settings()->isManagedByEnvironment('api_version')
                 ? $field->disabled()->readonly()
                 : $field,
         ]);
 
         OrbitConfig::registerItem('SendGo', 'sendgo.phone_verification_template_code', 'input', null, 'phone', [
-            'title' => __('Phone verification AlimTalk template'),
+            'title'       => __('Phone verification AlimTalk template'),
             'description' => __('Template code used when phone verification channel is AlimTalk.'),
             'visibleWhen' => [
                 'auth_methods.phone.enabled' => true,

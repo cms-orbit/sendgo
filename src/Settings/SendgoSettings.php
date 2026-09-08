@@ -14,12 +14,12 @@ class SendgoSettings
     public function fields(): array
     {
         return [
-            'url' => 'sendgo.url',
-            'access_key' => 'sendgo.access_key',
-            'secret_key' => 'sendgo.secret_key',
-            'sms_sender_key' => 'sendgo.sms_sender_key',
-            'kakao_sender_key' => 'sendgo.kakao_sender_key',
-            'api_version' => 'sendgo.api_version',
+            'url'                              => 'sendgo.url',
+            'access_key'                       => 'sendgo.access_key',
+            'secret_key'                       => 'sendgo.secret_key',
+            'sms_sender_key'                   => 'sendgo.sms_sender_key',
+            'kakao_sender_key'                 => 'sendgo.kakao_sender_key',
+            'api_version'                      => 'sendgo.api_version',
             'phone_verification_template_code' => 'sendgo.phone_verification_template_code',
         ];
     }
@@ -106,14 +106,14 @@ class SendgoSettings
     public function toSendgoConfig(): array
     {
         return [
-            'url' => $this->url(),
-            'access_key' => $this->accessKey(),
-            'secret_key' => $this->secretKey(),
-            'sms_sender_key' => $this->smsSenderKey(),
+            'url'              => $this->url(),
+            'access_key'       => $this->accessKey(),
+            'secret_key'       => $this->secretKey(),
+            'sms_sender_key'   => $this->smsSenderKey(),
             'kakao_sender_key' => $this->kakaoSenderKey(),
-            'api_version' => $this->apiVersion(),
-            'content_type' => 'application/json',
-            'accept' => 'application/json',
+            'api_version'      => $this->apiVersion(),
+            'content_type'     => 'application/json',
+            'accept'           => 'application/json',
         ];
     }
 
@@ -126,14 +126,14 @@ class SendgoSettings
     protected function environmentConfigKey(string $field): string
     {
         return match ($field) {
-            'url' => 'sendgo.url',
-            'access_key' => 'sendgo.access_key',
-            'secret_key' => 'sendgo.secret_key',
-            'sms_sender_key' => 'sendgo.sms_sender_key',
-            'kakao_sender_key' => 'sendgo.kakao_sender_key',
-            'api_version' => 'sendgo.api_version',
+            'url'                              => 'sendgo.url',
+            'access_key'                       => 'sendgo.access_key',
+            'secret_key'                       => 'sendgo.secret_key',
+            'sms_sender_key'                   => 'sendgo.sms_sender_key',
+            'kakao_sender_key'                 => 'sendgo.kakao_sender_key',
+            'api_version'                      => 'sendgo.api_version',
             'phone_verification_template_code' => 'sendgo.phone_verification_template_code',
-            default => $this->configKey($field),
+            default                            => $this->configKey($field),
         };
     }
 

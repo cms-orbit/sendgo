@@ -18,12 +18,12 @@ class MigrateAuthSendgoConfigCommand extends Command
      * @var array<string, string>
      */
     protected array $map = [
-        'auth_sendgo.access_key' => 'sendgo.access_key',
-        'auth_sendgo.secret_key' => 'sendgo.secret_key',
-        'auth_sendgo.endpoint' => 'sendgo.url',
-        'auth_sendgo.sender_key' => 'sendgo.sms_sender_key',
+        'auth_sendgo.access_key'       => 'sendgo.access_key',
+        'auth_sendgo.secret_key'       => 'sendgo.secret_key',
+        'auth_sendgo.endpoint'         => 'sendgo.url',
+        'auth_sendgo.sender_key'       => 'sendgo.sms_sender_key',
         'auth_sendgo.kakao_sender_key' => 'sendgo.kakao_sender_key',
-        'auth_sendgo.api_version' => 'sendgo.api_version',
+        'auth_sendgo.api_version'      => 'sendgo.api_version',
     ];
 
     public function handle(): int

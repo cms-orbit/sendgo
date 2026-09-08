@@ -13,8 +13,8 @@ trait ResolvesSendgoRoutes
     {
         return match (config('orbit.access.mode', 'subdomain')) {
             'subdomain' => $this->resolveOrbitSubdomainHost(),
-            'domain' => config('orbit.access.domain'),
-            default => null,
+            'domain'    => config('orbit.access.domain'),
+            default     => null,
         };
     }
 

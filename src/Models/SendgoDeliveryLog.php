@@ -22,7 +22,7 @@ class SendgoDeliveryLog extends Model
     {
         return [
             'recipient_count' => 'integer',
-            'success' => 'boolean',
+            'success'         => 'boolean',
         ];
     }
 }

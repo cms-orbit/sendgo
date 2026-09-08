@@ -19,7 +19,7 @@ class SendgoAlimtalkSender
     ) {}
 
     /**
-     * @param  list<array<string, mixed>>  $contacts
+     * @param list<array<string, mixed>> $contacts
      */
     public function send(
         string $templateCode,
@@ -40,8 +40,8 @@ class SendgoAlimtalkSender
         if (! $this->settings->configured() && app()->environment(['local', 'testing'])) {
             Log::info('[SendgoAlimtalkSender] stub send (SendGo not configured)', [
                 'templateCode' => $templateCode,
-                'storeUuid' => $storeUuid,
-                'contacts' => $contacts,
+                'storeUuid'    => $storeUuid,
+                'contacts'     => $contacts,
             ]);
 
             $this->logDelivery($storeUuid, $templateCode, count($contacts), true);
@@ -97,7 +97,7 @@ class SendgoAlimtalkSender
             $this->logDelivery($storeUuid, $templateCode, $recipientCount, false);
 
             Log::error('[SendgoAlimtalkSender] SendGo failed', [
-                'message' => $exception->getMessage(),
+                'message'      => $exception->getMessage(),
                 'templateCode' => $templateCode,
             ]);
 
@@ -123,11 +123,11 @@ class SendgoAlimtalkSender
     protected function logDelivery(?string $storeUuid, string $templateCode, int $recipientCount, bool $success): void
     {
         SendgoDeliveryLog::query()->create([
-            'store_uuid' => $storeUuid,
-            'template_code' => $templateCode,
-            'channel' => 'alimtalk',
+            'store_uuid'      => $storeUuid,
+            'template_code'   => $templateCode,
+            'channel'         => 'alimtalk',
             'recipient_count' => $recipientCount,
-            'success' => $success,
+            'success'         => $success,
         ]);
     }
 }

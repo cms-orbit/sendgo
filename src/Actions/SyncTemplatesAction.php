@@ -23,7 +23,7 @@ class SyncTemplatesAction extends Action
     }
 
     /**
-     * @param  Collection<int, Model>  $models
+     * @param Collection<int, Model> $models
      */
     public function handle(Collection $models)
     {

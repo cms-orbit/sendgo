@@ -41,15 +41,15 @@ class TemplateSyncService
             SendgoTemplate::query()->updateOrCreate(
                 ['uuid' => (string) $template['uuid']],
                 [
-                    'template_code' => (string) ($template['template_code'] ?? ''),
-                    'template_name' => $template['template_name'] ?? null,
-                    'status' => $template['status'] ?? null,
+                    'template_code'     => (string) ($template['template_code'] ?? ''),
+                    'template_name'     => $template['template_name'] ?? null,
+                    'status'            => $template['status'] ?? null,
                     'inspection_status' => $template['inspection_status'] ?? null,
-                    'kakao_sender_id' => $template['kakao_sender_id'] ?? null,
-                    'template_content' => $template['template_content'] ?? null,
-                    'buttons' => $template['buttons'] ?? null,
-                    'payload' => $template,
-                    'synced_at' => $now,
+                    'kakao_sender_id'   => $template['kakao_sender_id'] ?? null,
+                    'template_content'  => $template['template_content'] ?? null,
+                    'buttons'           => $template['buttons'] ?? null,
+                    'payload'           => $template,
+                    'synced_at'         => $now,
                 ]
             );
 
