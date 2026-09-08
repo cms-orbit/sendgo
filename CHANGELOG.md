@@ -2,10 +2,11 @@
 
 이 문서는 `cms-orbit/sendgo`의 릴리스 노트를 기록합니다.
 
-## 4.3.0 - 2026-09-08
+## 4.3.1 - 2026-09-08
 
 ### 변경
 
+- **`config.allow-plugins` 에 `pestphp/pest-plugin` 추가**: `require-dev` 에 pest 가 선언돼 있는데 플러그인 허용 설정이 없어 `composer update` 가 `pestphp/pest-plugin contains a Composer plugin which is blocked` 로 실패했습니다. CI 를 붙이자마자 드러났습니다.
 - **`cms-orbit/core` `^4.5` → `^4.6`**: core 4.6.0 이 `OrbitAccess` 라우팅 리졸버와 여러 관리자 화면 수정(PostgreSQL 500, strict mode, `orbit:install` 의 OrbitProvider 미등록)을 담고 있습니다.
 - **GitHub Actions 워크플로 추가**: php 8.4·8.5 로 `composer validate` 와 `pint --test` 를 돌리는 `ci.yml`, 그리고 태그의 `composer.json` version 이 태그명과 일치하는지 확인하는 `release-guard.yml`. Packagist 는 불일치 태그를 조용히 무시합니다.
 - 위성 패키지의 CI 는 `cms-orbit/core` 를 Packagist 게시본으로 받으므로, "지금 게시된 core 와 이 패키지의 제약이 함께 해석되는가" 까지 같이 검증합니다.
