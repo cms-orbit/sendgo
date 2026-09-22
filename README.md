@@ -15,7 +15,7 @@ Hub 대시보드, AlimTalk 템플릿 동기화, SMS·AlimTalk·FriendTalk 캠페
 ## 요구사항
 
 - PHP `^8.4`
-- `cms-orbit/core` `^4.5`
+- `cms-orbit/core` `^4.6`
 - `techigh/sendgo-notification` `^1.2`
 
 ## 설치
