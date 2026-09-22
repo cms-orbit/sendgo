@@ -198,7 +198,7 @@ export function SendgoHubDashboardLayout({ data }: LayoutComponentProps) {
                             <>
                                 <ResponsiveContainer width="100%" height={240}>
                                     <PieChart>
-                                        <Tooltip formatter={(value: number, _name, item) => [`${value}`, item.payload.name]} />
+                                        <Tooltip formatter={(value, _name, item) => [`${value}`, item.payload.name]} />
                                         <Pie
                                             data={chartData}
                                             dataKey="value"
